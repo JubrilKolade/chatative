@@ -10,8 +10,6 @@ router.get("/receive", (req, res) => {
   res.send("receive message endpoint");
 });
 
-router.get("/delete", (req, res) => {
-  res.send("delete message endpoint");
-});
+router.get("/delete", deleteMessage);
 
 export default router;
