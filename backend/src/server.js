@@ -11,7 +11,7 @@ console.log(PORT)
 const app = express();
 const _dirname = path.resolve();
 
-app.use("/api/auth", authRoutes)
+app.use("/api/auth", authRoutes) 
 app.use("/api/messages", messageRoutes)
 
 //make ready for deployment 
@@ -20,7 +20,7 @@ if(process.env.NODE_ENV === "production") {
     
     app.get("*", (_, res) => {
       res.sendFile(path.join(_dirname, "../frontend/dist", "index.html"))
-    })
+    }) 
 }
 
 app.listen(PORT, () => {
