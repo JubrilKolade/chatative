@@ -12,10 +12,10 @@ console.log(PORT)
 const app = express();
 const _dirname = path.resolve();
 
+app.use(express.json()) //req.body
+
 app.use("/api/auth", authRoutes) 
 app.use("/api/messages", messageRoutes)
-
-app.use(express.json()) //req.body
 
 //make ready for deployment 
 if(process.env.NODE_ENV === "production") {
