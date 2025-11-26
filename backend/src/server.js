@@ -12,7 +12,7 @@ console.log(PORT)
 const app = express();
 const _dirname = path.resolve();
 
-app.use(express.json()) //req.body
+app.use(express.json({limit: "5mb"})) //req.body
 app.use(cors({
     origin: ENV.CLIENT_URL,
     credentials: true
