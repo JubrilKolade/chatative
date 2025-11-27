@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import { useAuthStore } from "./useAuthStore";
-import { sender } from "../../../backend/src/lib/resend";
+// import { sender } from "../../../backend/src/lib/resend";
 
 export const useChatStore = create((set, get) => ({
     allContacts: [],
@@ -77,7 +77,7 @@ export const useChatStore = create((set, get) => ({
         set({messages: [...messages, optimisticMessage]})
 
         try {
-           const res = axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData) 
+           const res = await axiosInstance.post(`/messages/send/${selectedUser._id}`, messageData) 
            set({messages: messages.concat(res.data)})
         } catch (error) {
             //remove optimistic message on failure

@@ -2,17 +2,18 @@ import { useRef, useState } from "react";
 import useKeyBoardSound from "../hooks/useKeyboardSound"
 import { useChatStore } from "../store/useChatStore";
 import toast from "react-hot-toast";
+import { ImageIcon, SendIcon } from "lucide-react";
 
 const MessageInput = () => {
   const { playRandomKeyStrokeSound } = useKeyBoardSound();
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
 
   const fileInputRef = useRef(null);
 
   const { sendMessage, isSoundEnabled } = useChatStore()
 
-  const handleMessage = (e) => {
+  const handleSendMessage = (e) => {
     e.preventDefault()
     if(!text.trim() && !imagePreview) return;
     if(isSoundEnabled) playRandomKeyStrokeSound()
