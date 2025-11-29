@@ -50,7 +50,7 @@ export const signup = async (req, res) => {
         profilePic: newUser.profilePic
       })
       try {
-        await sendWelcomeEmail(savdUser.email, savedUser.fullName, ENV.CLIENT_URL);
+        await sendWelcomeEmail(savedUser.email, savedUser.fullName, ENV.CLIENT_URL);
       } catch (error) {
         console.error("failed to send welcome email:", error)
       }
